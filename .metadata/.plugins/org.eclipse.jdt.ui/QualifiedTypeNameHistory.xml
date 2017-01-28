@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="cop5556sp17.Scanner.Token"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="cop5556sp17.Scanner.Kind"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="cop5556sp17.Scanner.IllegalCharException"/>
+<fullyQualifiedTypeName name="java.lang.Character"/>
+<fullyQualifiedTypeName name="cop5556sp17.Scanner"/>
+<fullyQualifiedTypeName name="cop5556sp17.Scanner.LinePos"/>
+<fullyQualifiedTypeName name="cop5556sp17.Scanner.IllegalNumberException"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="javax.print.DocPrintJob"/>
+</qualifiedTypeNameHistroy>
