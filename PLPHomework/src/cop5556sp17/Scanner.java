@@ -104,7 +104,7 @@ public class Scanner {
 				if (ch == '\n') {
 					line++;
 					posInLine = 0;
-				}else{
+				} else {
 					posInLine++;
 				}
 			}
@@ -140,15 +140,12 @@ public class Scanner {
 		this.chars = chars;
 		tokens = new ArrayList<Token>();
 		/*
-		lineNumber = new int[chars.length()];
-		lineNumberCount = 0;
-
-		positionNumberCount = 0;
-		positionNumber = new int[chars.length()];
-
-		Arrays.fill(lineNumber, -1);
-		Arrays.fill(positionNumber, -1);
-		*/
+		 * lineNumber = new int[chars.length()]; lineNumberCount = 0;
+		 * 
+		 * positionNumberCount = 0; positionNumber = new int[chars.length()];
+		 * 
+		 * Arrays.fill(lineNumber, -1); Arrays.fill(positionNumber, -1);
+		 */
 		//////////////////////////////////////////////////
 		//////////////////////////////////////////////////
 		operatorSet = new HashSet<Character>();
@@ -225,14 +222,12 @@ public class Scanner {
 	HashSet<Character> identSet;
 	HashSet<Character> intSet;
 	HashMap<String, Kind> keywordMap;
-	
+
 	/*
-	int lineNumber[];
-	int lineNumberCount;
-	int positionNumber[];
-	int positionNumberCount;
+	 * int lineNumber[]; int lineNumberCount; int positionNumber[]; int
+	 * positionNumberCount;
 	 */
-	
+
 	/**
 	 * Initializes Scanner object by traversing chars and adding tokens to
 	 * tokens list.
@@ -265,8 +260,8 @@ public class Scanner {
 
 			// handle line number
 			if (ch == '\n') {
-				//lineNumberCount++;
-				//positionNumberCount = 0;
+				// lineNumberCount++;
+				// positionNumberCount = 0;
 			}
 
 			/*
@@ -406,6 +401,7 @@ public class Scanner {
 				if (ch == '/') {
 					if (pos + 1 < length) {
 						if ('*' == chars.charAt(pos + 1)) {// /* encountered
+							int posOfComment = pos;
 							pos = pos + 2;
 
 							while (pos < length) { // look for */
@@ -420,11 +416,20 @@ public class Scanner {
 
 								pos++;
 							}
-						} else {
+
+							// handle the case when comment is not closed -
+							// start
+							if (pos == length) {
+								throw new IllegalCharException(
+										"/* comment started at position: " + posOfComment + " but was never ended");
+							}
+							// handle the case when comment is not closed - end
+
+						} else {// only / found add division token
 							tokens.add(new Token(Kind.DIV, pos, 1));
 							continue;
 						}
-					} else {
+					} else {// only / found add division token
 						tokens.add(new Token(Kind.DIV, pos, 1));
 						continue;
 					}
@@ -443,7 +448,7 @@ public class Scanner {
 
 			/*
 			 * *****************************************************************
-			 * ********************************** 4. handle seperator
+			 * ********************************** 4. handle separator
 			 * 
 			 */
 
@@ -507,7 +512,7 @@ public class Scanner {
 				}
 
 				tokens.add(new Token(Kind.INT_LIT, pos, ptr - pos));
-		
+
 				pos = ptr;
 				pos--;
 				continue;
@@ -530,10 +535,10 @@ public class Scanner {
 				String sub = chars.substring(pos, ptr);
 				if (keywordMap.containsKey(sub)) {
 					tokens.add(new Token(keywordMap.get(sub), pos, ptr - pos));
-					
+
 				} else {
 					tokens.add(new Token(Kind.IDENT, pos, ptr - pos));
-					
+
 				}
 				pos = ptr;
 				pos--;
@@ -593,7 +598,7 @@ public class Scanner {
 			if (ch == '\n') {
 				line++;
 				posInLine = 0;
-			}else{
+			} else {
 				posInLine++;
 			}
 		}
